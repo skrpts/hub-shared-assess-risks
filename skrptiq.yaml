@@ -1,0 +1,25 @@
+# --- Identity ---
+id: "ac7d2340-3979-42b4-bb93-f2197344f591"
+name: "assess-risks"
+display_name: "Assess Risks"
+description: "Identifies, categorises, and scores risks with mitigation strategies"
+version: "1.0.0"
+engine: ">=0.1.0"
+author:
+  name: "skrptiq"
+  url: "https://hub.skrptiq.ai"
+licence: "MIT"
+repository: "https://github.com/skrpts/hub-shared-assess-risks"
+category: "shared"
+tags:
+  - "shared"
+  - "prompt"
+contents:
+  skills: 0
+  prompts: 1
+  workflows: 0
+  services: 0
+  sources: 0
+  documents: 0
+  assets: 0
+  total: 1
