@@ -312,15 +312,27 @@ jobs:
           fi
 
           # Extract content hash from the signed manifest's integrity block.
+          #
+          # ANCHORED on the `integrity:` block (NOT the first `checksum:` in
+          # the manifest). Pre-GH#625 dep-referenced consumers had only one
+          # `checksum:` occurrence (inside integrity), so the unanchored
+          # regex worked by accident. After Step 3 introduces a
+          # `dependencies:` block, the manifest has 1+N `checksum:` entries
+          # (one per dep + one in integrity), and the unanchored
+          # `match.match(/checksum:.../)` returns dep[0]'s checksum
+          # alphabetically — NOT the bundle's own integrity checksum.
+          # Surfaced live on roadmap-generation-flow v1.1.28: contentHash
+          # in D1 was set to analyse-stakeholders' dep checksum, not the
+          # bundle's. Fix-forward via v1.1.29 with this regex change in
+          # the same wave.
+          #
           # The CLI signer may emit `checksum: sha256:abc…` (unquoted) or
-          # `checksum: "sha256:abc…"` (quoted) depending on version; accept
-          # both. The previous quoted-only regex silently produced empty
-          # content_hash for unquoted releases — latest consumer skrpts
-          # were affected too, not just shared objects.
+          # `checksum: "sha256:abc…"` (quoted) depending on version; both
+          # accepted under the integrity-anchor.
           CONTENT_HASH=$(node -e "
             const m = require('fs').readFileSync('skrptiq.yaml','utf-8');
-            const match = m.match(/checksum:\\s*\"?sha256:([a-f0-9]+)\"?/);
-            console.log(match ? match[1] : '');
+            const intMatch = m.match(/integrity:\\s*\\n(?:\\s+\\w+:[^\\n]*\\n)*\\s+checksum:\\s*\"?sha256:([a-f0-9]+)\"?/);
+            console.log(intMatch ? intMatch[1] : '');
           ")
 
           PAYLOAD=$(node -e "
