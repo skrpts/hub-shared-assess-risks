@@ -3,7 +3,7 @@ id: "6554a264-d20e-4132-b3b6-3959f81c004b"
 name: "assess-risks"
 display_name: "Assess Risks"
 description: "Identifies, categorises, and scores risks with mitigation strategies"
-version: "1.0.1"
+version: "1.0.2"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
