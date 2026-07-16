@@ -2,7 +2,7 @@
 type: prompt
 id: assess-risks
 title: "Assess Risks"
-description: "Identifies, categorises, and scores risks with mitigation strategies"
+description: "Identifies, categorizes, and scores risks with mitigation strategies"
 tags: [Production, Planning]
 
 metadata:
