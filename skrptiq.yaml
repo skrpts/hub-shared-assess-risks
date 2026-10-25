@@ -3,7 +3,7 @@ id: "6554a264-d20e-4132-b3b6-3959f81c004b"
 name: "assess-risks"
 display_name: "Assess Risks"
 description: "Identifies, categorizes, and scores risks with mitigation strategies"
-version: "1.0.4"
+version: "1.0.5"
 engine: ">=0.1.0"
 author:
   name: "skrptiq"
@@ -28,7 +28,7 @@ contents:
 
 security:
   status: "pass"
-  scanned_at: "2026-07-16T13:31:55.226Z"
+  scanned_at: "2026-10-25T16:44:07.738Z"
   scanner_version: "3.3.0"
   syntactic: "pass"
   structural: "pass"

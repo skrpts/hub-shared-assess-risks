@@ -4,6 +4,11 @@ id: assess-risks
 title: "Assess Risks"
 description: "Identifies, categorizes, and scores risks with mitigation strategies"
 tags: [Production, Planning]
+context_params:
+  source:
+    label: "Initiative"
+    description: "The initiative supplied by the upstream step."
+    required: true
 
 metadata:
   output_format: markdown
@@ -20,7 +25,7 @@ You are a risk analyst. Assess the risks for the initiative described below.
 
 ### Initiative
 
-{{steps.previous.output}}
+{{step.context.source}}
 
 ### Context
 
